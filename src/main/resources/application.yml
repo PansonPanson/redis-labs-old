@@ -1,0 +1,163 @@
+spring:
+  application:
+    name: redis-labs
+  redis:
+    database: 0           # Redis服务器数据库
+    host: 172.31.239.246  # Redis服务器地址
+    port: 6379            # Redis服务器连接端口
+    timeout: 6000ms       # 连接超时时间（毫秒）
+
+#  datasource:
+#    druid:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      url: jdbc:mysql://${db.url:192.168.1.185:3306}/?useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true
+#      username: ${db.username:root}
+#      password: ${db.password:root123}
+#      initial-size: 15
+#      max-active: ${db.pool.max.active:30}
+#      min-idle: 5
+#      max-wait: 60000
+#      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#      filters: stat
+#      # 打开PSCache，并且指定每个连接上PSCache的大小
+#      maxPoolPreparedStatementPerConnectionSize: 20
+#      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+#      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#      # 合并多个DruidDataSource的监控数据
+#      useGlobalDataSourceStat: true
+#      # Druid 与 Flyway 的冲突
+#      wall:
+#        config:
+#          variantCheck: false
+#          noneBaseStatementAllow: true
+#          commentAllow: true
+#          multiStatementAllow: true
+#  message:
+#    producer:
+#      queue: rocketMQ
+#    consumer:
+#      queue: rocketMQ
+#    queue:
+#      rocketmq:
+#        namesrvAddr: ${queue.url:192.168.1.185:9876}
+#        enableProducer: true
+#  profiles:
+#    #      active: dev
+#    active: dev-local
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: ${time-zone:GMT+8}
+#  flyway:
+#    baseline-version: 1
+#    baseline-on-migrate: true
+#    validate-on-migrate: false
+#    out-of-order: true
+#    enabled: true
+#    schemas: evo_wes_basic
+#    placeholder-replacement: false
+#  mvc:
+#    static-path-pattern: /**
+#  resources:
+#    static-locations: file:${image.upload-path},classpath:/META-INF/resources/,classpath:/META-INF/resources/webjars/
+#server:
+#  port: 7777
+#  max-http-header-size: 65535
+##  servlet:
+##    context-path: /evo-wes
+##redisson配置
+#redisson:
+#  connection:
+#    poolsize: ${redissonPoolsize:100}
+#  redis:
+#    database: ${redissonDatabase:10}
+#logging:
+#  pattern:
+#    console: "%d %thread %5level %logger{50} : %line %msg%n"
+#  config: classpath:log4j2.xml
+#
+#
+#extension:
+#  point:
+#    prefix: wes
+#
+## 在本地开发时，不和eureka发生通信
+#
+#eureka:
+#  enabled: true
+#  instance:
+#    prefer-ip-address: true
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 10
+#  client:
+#    # 在本地开发时，不和eureka发生通信
+#    fetchRegistry: true
+#    registerWithEureka: true
+#    serviceUrl:
+#      defaultZone: ${eureka.url:http://192.168.1.185:8761/eureka/}
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 50000
+#        readTimeout: 50000
+#adapter:
+#  mock-mode: false
+#
+#image:
+#  upload-path: /opt/evo-wes/image/
+#  ip-address: ${host.ip:192.168.1.185}
+#
+#i18n:
+#  enabled: true
+#  refresh:
+#    prefix: wes
+#
+##mybatis-plus:
+##  mapper-locations: "classpath:mapper/**/**/*Mapper.xml"
+##  config-location: "classpath:mybatis/mybatis-config.xml"
+##  type-aliases-package: "BaseDO"
+##  type-aliases-super-type: java.lang.Object
+#
+#algorithm-bucket:
+#  e: ${algorithm-bucket-e:0.1}
+#  w: ${algorithm-bucket-w:2}
+#
+#algorithm-station:
+#  u: ${algorithm-station-u:0.01}
+#  h: ${algorithm-station-h:0.1}
+#  q: ${algorithm-station-q:0.5}
+#  m: ${algorithm-station-m:0.2}
+#  job:
+#    size: ${algorithm-station-job-size:3000}
+#
+#algorithm-bucket-adjust:
+#  delay: ${algorithm-bucket-adjust-delay:30}
+#
+#algorithm-workbin:
+#  w1: 1
+#  w2: 1
+#  w3: 10
+#  w4: 1
+#  w5: 1
+#algorithm-assign-countcheckstation:
+#  u1: 0.8
+#  u2: 0.5
+#algorithm-order-wave:
+#  a: ${algorithm-order-wave-a:0.1}
+#  m: ${algorithm-order-wave-m:0.2}
+#algorithm-bucket-hot:
+#  k: ${algorithm-bucket-hot-k:4}
+#
+##order-group表定时清除时间
+#order-group-timed-clear:
+#  cron: ${orderGroupClearTime.second:59} ${orderGroupClearTime.minute:59} ${orderGroupClearTime.hour:23} * * ?
+##分工作站一次性拉取作业单的默认数量
+#work-assign-station:
+#  workCount: ${pullWork.count:1000}
+#
+##删除库存快照,距离当前时间间隔时间
+#inventorySnapshot:
+#  delete:
+#    time:
+#      interval: ${inventorySnapshot.delete.interval:10}
